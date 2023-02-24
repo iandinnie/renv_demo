@@ -1,0 +1,29 @@
+---
+title: "renv"
+output: html_document
+date: '2023-02-24'
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(renv)
+```
+
+```{r}
+renv::init()
+renv::snapshot()
+```
+
+
+
+```{r}
+expenses <- tibble(
+  id = c(1, 2, 1, 3, 1, 2, 3),
+  region = c("A", "A", "A", "B", "B", "A", "A"),
+  cost = c(25, 20, 19, 12, 9, 6, 6)
+)
+
+expenses %>% 
+  summarise(cost = mean(cost), .by = region)
+```
+
